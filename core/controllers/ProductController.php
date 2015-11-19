@@ -60,4 +60,15 @@ class ProductController extends Controller {
       view()->addLocation(app_path() . '/modules/products/core/views');
       return view('view', ['product' => $product]);
     }
+
+    /*
+     * Render's a list with all of the products
+     */
+     public function actionList()
+     {
+       $products = Product::all();
+       //render the view
+       view()->addLocation(app_path() . '/modules/products/core/views');
+       return view('list', ['products' => $products]);
+     }
 }
