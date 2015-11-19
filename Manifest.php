@@ -32,9 +32,52 @@ class Products {
             'parent' => 'products_top',
             'package' => 'sephora.basic.products'
         ],
+        2 => [
+            'type' => 'child',
+            'title' => 'List products',
+            'uuid' => 'products_new-product',
+            'url' => '/products/list',
+            'parent' => 'products_top',
+            'package' => 'sephora.basic.products'
+        ],
     ];
     //Routes data
     public $routes = [
+      0 => [
+          'type' => 'GET',
+          'url' => '/products/new',
+          'action' => '\App\modules\products\core\controllers\ProductController@actionNew'
+      ],
+      1 => [
+          'type' => 'GET',
+          'url' => '/products/list',
+          'action' => '\App\modules\products\core\controllers\ProductController@actionList'
+      ],
+      2 => [
+          'type' => 'POST',
+          'url' => '/products/new',
+          'action' => '\App\modules\products\core\controllers\ProductController@actionCreate'
+      ],
+      3 => [
+          'type' => 'GET',
+          'url' => '/products/view/{id}',
+          'action' => '\App\modules\products\core\controllers\ProductController@actionView'
+      ],
+      4 => [
+          'type' => 'GET',
+          'url' => '/products/update/{id}',
+          'action' => '\App\modules\products\core\controllers\ProductController@actionUpdate'
+      ],
+      5 => [
+          'type' => 'POST',
+          'url' => '/products/update',
+          'action' => '\App\modules\products\core\controllers\ProductController@actionModify'
+      ],
+      6 => [
+          'type' => 'GET',
+          'url' => '/products/delete/{id}',
+          'action' => '\App\modules\products\core\controllers\ProductController@actionDelete'
+      ]
     ];
    /* //Triggers
     public $triggers = [

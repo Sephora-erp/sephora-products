@@ -3,14 +3,15 @@
 use App\Http\Helpers\ModuleHelper;
 use App\Http\Helpers\TriggerHelper;
 use App\Http\Helpers\HookHelper;
+use App\Http\Controllers\SettingsController;
 ?>
 @extends('template')
 @section('content')
 <!-- Content Header (Page header) -->
 <!-- Main content -->
 <section class="content">
-    <h2 class="page-header"><i class="fa fa-user"></i> New Customer</h2>
-    <form action="{{URL::to('/customers/new')}}" method="post">
+    <h2 class="page-header"><i class="fa fa-square"></i> New Product</h2>
+    <form action="{{URL::to('/products/new')}}" method="post">
         {!! csrf_field() !!}
         <div class="box box-default color-palette-box">
             <div class="box-header with-border">
@@ -20,116 +21,89 @@ use App\Http\Helpers\HookHelper;
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>Name</label>
+                            <label>Ref.</label>
                             <input type="text" class="form-control" name="name"/>
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>Lastname</label>
-                            <input type="text" class="form-control" name="lastname"/>
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="description"/>
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>NIF / DNI</label>
-                            <input type="text" class="form-control" name="cif"/>
+                            <label>VAT %</label>
+                            <input type="text" class="form-control" name="vat" value="{{SettingsController::fetchSetting('company_vat')}}"/>
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>Client type</label>
-                            <select class="form-control" name="status">
-                                <option value="1">Potential customer</option>
-                                <option value="2">Customer</option>
-                                <option value="3">Ex-Customer</option>
+                            <label>Price</label>
+                            <input type="text" class="form-control" name="price"/>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+        </div>
+
+        <div class="box box-default color-palette-box">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-ellipsis-v"></i> Extra info</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Weight</label>
+                            <input type="text" class="form-control" name="weight"/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Dimension X</label>
+                            <input type="text" class="form-control" name="d_x"/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Dimension Y</label>
+                            <input type="text" class="form-control" name="d_y"/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Dimension Z</label>
+                            <input type="text" class="form-control" name="d_z"/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Provider price</label>
+                            <input type="text" class="form-control" name="provider_price"/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select class="form-control" name="type">
+                              <option value="1">Product</option>
+                              <option value="2">Service</option>
+                              <option value="3">Other</option>
                             </select>
                         </div>
                     </div>
-
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.box-body -->
-        </div>
-
-        <div class="box box-default color-palette-box">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-bookmark-o"></i> Address / Contact info</h3>
-            </div>
-            <div class="box-body">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Adress</label>
-                            <input type="text" class="form-control" name="address"/>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Country</label>
-                            <input type="text" class="form-control" name="country"/>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>City</label>
-                            <input type="text" class="form-control" name="city"/>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>State</label>
-                            <input type="text" class="form-control" name="state"/>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Phone (1)</label>
-                            <input type="text" class="form-control" name="phone_1"/>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Phone (2)</label>
-                            <input type="text" class="form-control" name="phone_2"/>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Phone (3)</label>
-                            <input type="text" class="form-control" name="phone_3"/>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.box-body -->
-        </div>
-        <div class="box box-default color-palette-box">
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-commenting" name="note"></i> Other info</h3>
-            </div>
-            <div class="box-body">
-                <div class="row">
-
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Notes</label>
-                            <textarea class="form-control full-width"></textarea>
-                        </div>
-                    </div>
-
                 </div>
                 <!-- /.row -->
             </div>
@@ -141,4 +115,3 @@ use App\Http\Helpers\HookHelper;
     </form>
 </section>
 @stop
-

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\modules\customers\core\models;
+namespace App\modules\products\core\models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model {
+class Product extends Model {
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'customers';
+    protected $table = 'products';
 
 }
