@@ -11,12 +11,9 @@ use App\Http\Controllers\SettingsController;
 <!-- Main content -->
 <section class="content">
     <h2 class="page-header"><i class="fa fa-square"></i> #{{$product->id}} - {{$product->name}}
-      <div class="pull-right">
-        <a href="{{URL::to('/products/update/'.$product->id)}}" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-        <a href="{{URL::to('/products/delete/'.$product->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Delete</a>
-      </div>
     </h2>
-    <form action="{{URL::to('/products/new')}}" method="post">
+    <form action="{{URL::to('/products/update')}}" method="post">
+      <input type="hidden" name="id" value="{{$product->id}}"/>
         {!! csrf_field() !!}
         <div class="box box-default color-palette-box">
             <div class="box-header with-border">
@@ -27,28 +24,28 @@ use App\Http\Controllers\SettingsController;
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Ref.</label>
-                            <input type="text" class="form-control" name="name" value="{{$product->name}}" disabled="disabled"/>
+                            <input type="text" class="form-control" name="name" value="{{$product->name}}" />
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Description</label>
-                            <input type="text" class="form-control" name="description" value="{{$product->description}}" disabled="disabled"/>
+                            <input type="text" class="form-control" name="description" value="{{$product->description}}" />
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>VAT %</label>
-                            <input type="text" class="form-control" name="vat" value="{{$product->vat}}" disabled="disabled"/>
+                            <input type="text" class="form-control" name="vat" value="{{$product->vat}}" />
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="text" class="form-control" name="price" value="{{$product->price}}" disabled="disabled"/>
+                            <input type="text" class="form-control" name="price" value="{{$product->price}}" />
                         </div>
                     </div>
 
@@ -67,47 +64,50 @@ use App\Http\Controllers\SettingsController;
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Weight</label>
-                            <input type="text" class="form-control" name="weight" value="{{$product->weigth}}" disabled="disabled"/>
+                            <input type="text" class="form-control" name="weight" value="{{$product->weigth}}" />
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Dimension X</label>
-                            <input type="text" class="form-control" name="d_x" value="{{$product->d_x}}" disabled="disabled"/>
+                            <input type="text" class="form-control" name="d_x" value="{{$product->d_x}}" />
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Dimension Y</label>
-                            <input type="text" class="form-control" name="d_y" value="{{$product->d_y}}" disabled="disabled"/>
+                            <input type="text" class="form-control" name="d_y" value="{{$product->d_y}}" />
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Dimension Z</label>
-                            <input type="text" class="form-control" name="d_z" value="{{$product->d_z}}" disabled="disabled"/>
+                            <input type="text" class="form-control" name="d_z" value="{{$product->d_z}}" />
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Provider price</label>
-                            <input type="text" class="form-control" name="provider_price" value="{{$product->provider_price}}" disabled="disabled"/>
+                            <input type="text" class="form-control" name="provider_price" value="{{$product->provider_price}}" />
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Type</label>
-                            <select class="form-control" name="type" disabled="disabled">
+                            <select class="form-control" name="type" >
                               <option value="1">Product</option>
                               <option value="2">Service</option>
                               <option value="3">Other</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="col-md-12 center">
+                      <button type="submit" class="btn btn-xs btn-success"><i class="fa fa-save"></i> Save </button>
                     </div>
                 </div>
                 <!-- /.row -->

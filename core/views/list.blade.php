@@ -26,11 +26,11 @@ use App\Http\Controllers\SettingsController;
       <tbody>
           <tr>
               <th>Ref</th>
-              <th>VAT</th>
-              <th>Price</th>
-              <th>Total Price</th>
-              <th>Type</th>
-              <th></th>
+              <th style="width:140px;">VAT</th>
+              <th style="width:140px;">Price</th>
+              <th style="width:140px;">Total Price</th>
+              <th style="width:50px;">Type</th>
+              <th style="width:100px;"></th>
           </tr>
           @foreach($products as $product)
           <tr class="animated fadeInUp">
@@ -50,8 +50,9 @@ use App\Http\Controllers\SettingsController;
               @endif
             </td>
             <!-- actions -->
-            <td>
+            <td class="center">
               <a href="{{URL::to('/products/view/'.$product->id)}}" class="btn btn-xs btn-success"><i class="fa fa-eye"></i></a>
+              <a href="{{URL::to('/products/delete/'.$product->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
             </td>
           </tr>
           @endforeach
