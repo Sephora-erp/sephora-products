@@ -15,15 +15,15 @@ use App\Http\Controllers\SettingsController;
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Monthly Recap Report</h3>
+              <h3 class="box-title">List</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
                 <div class="col-md-12">
 
-    <table class="table table-bordered">
-      <tbody>
+    <table class="table table-bordered" id="listTable">
+      <thead>
           <tr>
               <th>Ref</th>
               <th style="width:140px;">VAT</th>
@@ -32,6 +32,8 @@ use App\Http\Controllers\SettingsController;
               <th style="width:50px;">Type</th>
               <th style="width:100px;"></th>
           </tr>
+      </thead>
+      <tbody>
           @foreach($products as $product)
           <tr class="animated fadeInUp">
             <td>{{$product->name}}</td>
@@ -65,4 +67,11 @@ use App\Http\Controllers\SettingsController;
   </div>
 </div>
 </section>
+<script>
+(function() {
+  setTimeout(function(){
+    jQuery("#listTable").dataTable();
+  },1500);
+})();
+</script>
 @stop
